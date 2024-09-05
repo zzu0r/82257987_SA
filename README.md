@@ -31,7 +31,3 @@ http://[hostname]:8080
     # 비밀번호
     password: 1234
 ~~~
-
-## 배포시 유의사항
-- ingress.yaml host 변경
-- 각자 네임스페이스에 배포
