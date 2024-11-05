@@ -48,9 +48,10 @@ jobs:
 
     - name: 'Build & Tag Image'
       run: |
-            docker build -t ${{ secrets.BASEACR_LOGIN_SERVER  }}/${{ env.IMAGE_NAME }}:${{ steps.gen-version.outputs.VERSION }} -f Dockerfile-maven .
-            docker tag ${{ secrets.BASEACR_LOGIN_SERVER  }}/${{ env.IMAGE_NAME }}:${{ steps.gen-version.outputs.VERSION }} ${{ secrets.STAPACR_LOGIN_SERVER  }}/${{ env.IMAGE_NAME }}:${{ steps.gen-version.outputs.VERSION }}
-    
+            docker build -t ${{ secrets.BASEACR_LOGIN_SERVER  }}/${{ env.IMAGE_NAME }}:${{ steps.gen-version.outputs.VERSION }} -f Dockerfile-maven.dockerfile .
+            docker tag ${{ secrets.BASEACR_LOGIN_SERVER }}/${{ env.IMAGE_NAME }}:${{ steps.gen-version.outputs.VERSION }} ${{ secrets.CI_ACR_LOGIN_SERVER  }}/${{ env.IMAGE_NAME }}:${{ steps.gen-version.outputs.VERSION }}
+  
+
     - name: 'Push image'
       uses: azure/docker-login@v1
       with:
@@ -74,5 +75,5 @@ jobs:
           echo "`ls`"
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
-          git push -u origin main
           git commit -am "Update image tag"
+          git push -u origin main
