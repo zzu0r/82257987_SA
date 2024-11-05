@@ -11,7 +11,7 @@ name: github action CI
 on: workflow_dispatch
 
 env:
-  IMAGE_NAME: 82257987_SA
+  IMAGE_NAME: 82257987_sa
 
 jobs:
   build:
