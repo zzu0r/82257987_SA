@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ce-82257987-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: 82257987-azurefile-sc #내가 생성한 SC 입력
+  resources:
+    requests:
+      storage: 1Gi
